@@ -40,9 +40,28 @@ namespace Kolokwium1.Services
             return lists;
             }
 
-        public TaskResponse PostTask(TaskRequest request)
+        public object PostTask(TaskRequest request)
         {
-            throw new NotImplementedException();
+            TaskResponse response = null;
+            using (var connection = new SqlConnection("Data Source=db-mssql;Initial Catalog=s18967;Integrated Security=True"))
+            using (var command = new SqlCommand())
+            {
+
+                command.Connection = connection;
+                connection.Open();
+                var transaction = connection.BeginTransaction();
+                command.Transaction = transaction;
+                //nie zdążyłem powinno tu sprawdzic czy instnieje taki rodzaj tasktype jesli nie to dodac tasktype potem type potem commit
+                //potem zwrocic response
+                try { }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                }
+            }
+
+                return response;
+
         }
     }
 }
