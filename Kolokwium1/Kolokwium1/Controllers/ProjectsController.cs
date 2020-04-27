@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kolokwium1.DTOs;
 using Kolokwium1.Models;
 using Kolokwium1.Services;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,15 @@ namespace Kolokwium1.Controllers
             if (!list.Any()) return NotFound("nie znaleziono zadan");//jesli lista pusta
 
             return Ok(list);
+        }
+        [HttpPost]
+        public IActionResult CreateProject(TaskRequest request)
+        {
+            TaskRessponse ressponse = _service.PostTask(request);
+            if (ressponse == null) { return BadRequest("Bad"); }
+
+            return Ok(response);
+
         }
     }
 }

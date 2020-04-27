@@ -1,4 +1,5 @@
-﻿using Kolokwium1.Models;
+﻿using Kolokwium1.DTOs;
+using Kolokwium1.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -38,5 +39,10 @@ namespace Kolokwium1.Services
             }
             return lists;
             }
+
+        public TaskResponse PostTask(TaskRequest request)
+        {
+            throw new NotImplementedException();
         }
+    }
 }

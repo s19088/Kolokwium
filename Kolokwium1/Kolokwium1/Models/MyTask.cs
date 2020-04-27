@@ -7,10 +7,10 @@ namespace Kolokwium1.Models
 {
     public class MyTask
     {
-        public string ProjectName { get; set; } // Name z Project
-        public string Description { get; set; } // Description z Task
-        public DateTime Deadline { get; set; } // Deadline z Task
-        public string TaskName { get; set; } // nazwa z Task
-        public string TaskType { get; set; } // z TaskType wyciagnac Name
+        public string ProjectName { get; set; }
+        public string Description { get; set; }
+        public DateTime Deadline { get; set; } 
+        public string TaskName { get; set; } 
+        public string TaskType { get; set; } 
     }
 }
