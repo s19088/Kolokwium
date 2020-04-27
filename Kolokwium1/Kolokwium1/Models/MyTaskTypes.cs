@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Kolokwium1.Models
 {
-    public class MyTaskTypecs
+    public class MyTaskTypes
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

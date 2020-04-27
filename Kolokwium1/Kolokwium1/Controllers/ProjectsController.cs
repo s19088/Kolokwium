@@ -21,7 +21,7 @@ namespace Kolokwium1.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTask (int id) {
             List<MyTask> list = _service.GetProjectInfo(id);
-            if (list.Any()) return NotFound("nie znaleziono zadan");//jesli lista pusta
+            if (!list.Any()) return NotFound("nie znaleziono zadan");//jesli lista pusta
 
             return Ok(list);
         }

@@ -17,23 +17,26 @@ namespace Kolokwium1.Services
             {
                 command.Connection = connection;
                 connection.Open();
-                command.CommandText = "Select IndexNumber,FirstName,LastName,BirthDate,Semester,Name from Studies inner join enrollment on studies.idStudy=enrollment.idStudy" +
-                    " inner join Student on enrollment.idEnrollment=student.idEnrollment where indexnumber=@index";
-                command.Parameters.AddWithValue("index", Index);
+                command.CommandText = "select Project.Name, Task.Description, Task.Deadline, Task.Name, TaskType.Name FROM Task"+
+                                        "INNER JOIN TaskType ON Task.IdTaskType = Task.IdTaskType"
+                                        + "INNER JOIN Project ON Task.IdProject = Project.IdProject"
+                                        + "WHERE Project.IdProject = @id"
+                                        + "ORDER BY Task.Deadline desc ";
+                command.Parameters.AddWithValue("id", id);
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-                    student = new Student();
-                    student.IndexNumber = dr["IndexNumber"].ToString();
-                    student.FirstName = dr["FirstName"].ToString();
-                    student.LastName = dr["LastName"].ToString();
-                    student.BirthDate = dr["BirthDate"].ToString();
-                    student.Semester = dr["Semester"].ToString();
-                    student.Studies = dr["Name"].ToString();
-                    Console.Out.WriteLine(student.ToString());
+                    var task= new MyTask();
+                    task.ProjectName = dr["Project.Name"].ToString();
+                    task.Description = dr["Task.Description"].ToString();
+                    task.Deadline = (DateTime)dr["Task.Deadline"];
+                    task.TaskName = dr["Task.Name"].ToString();
+                    task.TaskType= dr["TaskType.Name"].ToString();
+                    lists.Add(task);
                 }
                 dr.Close();
             }
+            return lists;
             }
         }
 }
