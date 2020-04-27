@@ -52,7 +52,7 @@ namespace Kolokwium1.Services
                 var transaction = connection.BeginTransaction();
                 command.Transaction = transaction;
                 //nie zdążyłem powinno tu sprawdzic czy instnieje taki rodzaj tasktype jesli nie to dodac tasktype potem type potem commit
-                //potem zwrocic response
+                //potem zwrocic response  
                 try { }
                 catch (SqlException e)
                 {
