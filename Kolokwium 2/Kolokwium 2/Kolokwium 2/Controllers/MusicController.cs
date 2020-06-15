@@ -24,7 +24,7 @@ namespace Kolokwium_2.Controllers
         {
             if (_context.MusicLabels.Where(e => e.IdMusicLabel == id).Any())
             {
-                List<Album> list = new List<Album>();
+                List<Album> list = new List<Album>();//lista albumow
                 foreach(var album in _context.Albums.OrderByDescending(e=>e.PublishDate))
                 {
                     if(album.IdMusicLabel == id)
